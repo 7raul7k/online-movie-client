@@ -2,6 +2,6 @@ export interface MoviesDTO{
   name: string;
   genre: string;
   year: number;
-  rating: number;
+  rating: string;
   director: string;
 }

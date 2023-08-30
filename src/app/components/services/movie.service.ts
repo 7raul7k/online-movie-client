@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {catchError, throwError} from "rxjs";
+import {catchError, Observable, throwError} from "rxjs";
 import {MoviesDTO} from "../../models/api/MoviesDTO";
 
 @Injectable({
@@ -15,6 +15,10 @@ export class MovieService {
 
   getAllMovies(){
     return this.http.get<MoviesDTO[]>(this.url + "/allMovies").pipe(catchError(this.handleError));
+  }
+
+  addMovie(movieDTO : MoviesDTO) : Observable<String>{
+    return this.http.post<String>(this.url + "/addMovie",movieDTO).pipe(catchError(this.handleError));
   }
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
