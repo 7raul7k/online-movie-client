@@ -1,0 +1,175 @@
+
+*{
+  box-sizing: border-box;
+}
+body{
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 500px 1fr 1fr ;
+  height: 100vh;
+  width: 100%;
+
+  grid-template-areas:
+      "head head head"
+      "main main main"
+      "main main main";
+}
+
+.create-button{
+  width: 80%;
+}
+.header-container{
+  grid-area: head;
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+}
+
+.card-container{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border: 2px solid black;
+  width: 39%;
+  height: 50%;
+  background-color: rgb(122, 235, 235,0.9);
+  margin-bottom: 10px;
+
+
+
+}
+
+
+.card-container > section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+
+  width: 100%;
+  height: 24%;
+  border: 2px solid gray;
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0px;
+  border-bottom-width: 2px;
+
+
+}
+
+section > label{
+display: flex;
+  flex-direction: row;
+  font-size: 10px;
+  font-weight: 700;
+  color: black;
+
+}
+
+section > p{
+  font-size: 10px;
+  font-weight: 100;
+  color: black;
+  height: 10%;
+
+}
+
+.cards-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  align-items: center;
+  justify-content: space-around;
+  justify-items: center;
+
+
+  width: 90vh;
+  height: 100%;
+
+
+
+}
+
+
+
+.card-container > img{
+
+  display: block;
+  width: 30%;
+}
+
+.form-container{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+
+
+  width: 50%;
+  height: 100%;
+
+
+
+}
+
+
+
+.form-container > p {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  justify-items: center;
+
+  border-bottom: 2px solid black;
+
+
+
+
+
+
+
+}
+
+p {
+  padding : 10px 4px;
+
+}
+p > input{
+  width: 60%;
+  height: 30px;
+
+}
+
+button{
+  width: 20%;
+  height: 30px;
+  background-color: rgb(122, 235, 235,0.6);
+  border: 2px solid black;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  color: black;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  width: 500px;
+}
+
+.title{
+  font-size: 12px;
+}
