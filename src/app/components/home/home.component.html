@@ -1,0 +1,37 @@
+<header class="header-container">
+
+  <ul class="nav-container">
+    <button class="create-button">Create button</button>
+  </ul>
+</header>
+
+
+
+<div class="cards-container">
+
+  <div class="card-container" *ngFor="let movie of movies ">
+
+    <section class="title-container">
+      <label for="title" id="title">Title:</label>
+      <h2 class="title">{{movie.name}}</h2>
+    </section>
+    <section class="rating-container">
+      <label for="rating" id="rating">Rating:</label>
+      <p class="rating"> {{movie.rating}} / 10</p>
+    </section>
+    <section class="genre-container">
+      <label for="genre" id="genre">Genre:</label>
+      <p class="genre">{{movie.genre}}</p>
+    </section>
+    <section class="year-container">
+      <label for="year" id="year">Year:</label>
+      <p class="year">{{movie.year}}</p>
+    </section>
+    <section class="director-container">
+      <label for="director" id="director">Director:</label>
+      <p class="director">{{movie.director}}</p>
+    </section>
+  </div>
+
+
+</div>
