@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="form-container">
+
+    <h1>Update Movie</h1>
+    <p>
+      <label for="name">Name</label>
+      <input name ="name" type="text" id="name" [(ngModel)]="movie.name">
+    </p>
+
+    <p>
+      <label for="genre">Genre</label>
+      <input name="genre" type="text" id="genre" [(ngModel)]="movie.genre">
+    </p>
+
+    <p>
+      <label for="year">Year</label>
+      <input name="year" type="text" id="year" [(ngModel)]="movie.name">
+    </p>
+
+    <p>
+      <label for="rating">Rating</label>
+      <input name="rating" type="text" id="rating" [(ngModel)]="movie.rating">
+    </p>
+
+
+    <p>
+      <label for="director">Director</label>
+      <input name="director" type="text" id="director" [(ngModel)]="movie.director">
+    </p>
+
+
+  </div>
+
+  <div class="buttons-container">
+
+    <p>  <button class="cancel">Cancel</button> </p>
+
+    <p><button class="update-movie" (click)="updateMovie()" type="submit">Update Movie</button></p>
+
+    <p><button class="delete-movie">Delete Movie</button></p>
+  </div>
+</div>
+
+<div *ngIf="messages.length>0" class="messages">
+  <p-messages [(value)]="messages" [enableService]="false" [closable]="true"></p-messages>
+
+</div>

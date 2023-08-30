@@ -20,6 +20,14 @@ export class MovieService {
   addMovie(movieDTO : MoviesDTO) : Observable<String>{
     return this.http.post<String>(this.url + "/addMovie",movieDTO).pipe(catchError(this.handleError));
   }
+
+  getMovieById(id : number) : Observable<MoviesDTO>{
+    return this.http.get<MoviesDTO>(this.url + `/getMovieById/${id}`).pipe(catchError(this.handleError));
+  }
+
+  updateMovie(movieDTO : MoviesDTO) : Observable<String>{
+    return this.http.put<String>(this.url + "/updateMovie",movieDTO).pipe(catchError(this.handleError));
+  }
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);

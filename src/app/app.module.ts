@@ -4,17 +4,19 @@ import { HttpClientModule} from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HomeComponent} from "./components/home/home.component";
-import { NewMovieComponent } from './components/new-movie/new-movie.component';
 import {FormsModule} from "@angular/forms";
 import {MessagesModule} from "primeng/messages";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { MovieUpdateComponent } from './components/movie-update/movie-update.component';
+import {NewMovieComponent} from "./components/new-movie/new-movie.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NewMovieComponent
+    NewMovieComponent,
+    MovieUpdateComponent
   ],
   imports: [
     BrowserModule,
