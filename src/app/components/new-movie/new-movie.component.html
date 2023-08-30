@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="form-container">
+
+    <h1>Create new Movie</h1>
+
+    <p>
+      <label for="name">Name</label>
+      <input name ="name" type="text" id="name" [(ngModel)]="nameValue" >
+    </p>
+
+    <p>
+      <label for="genre">Genre</label>
+      <input name="genre" type="text" id="genre" [(ngModel)]="genreValue">
+    </p>
+
+    <p>
+      <label for="year">Year</label>
+      <input name="year" type="text" id="year"  [(ngModel)]="yearValue">
+    </p>
+
+    <p>
+      <label for="rating">Rating</label>
+      <input name="rating" type="text" id="rating" [(ngModel)]="ratingValue" >
+    </p>
+
+
+    <p>
+      <label for="director">Director</label>
+      <input name="director" type="text" id="director" [(ngModel)]="directorValue">
+    </p>
+
+
+  </div>
+
+  <div class="buttons-container">
+
+    <p>  <button class="cancel">Cancel</button> </p>
+
+    <p><button class="add-movie" (click)="save()">Add Movie</button></p>
+  </div>
+</div>
+
+<div *ngIf="mesagges.length > 0" class="messages">
+  <p-messages [(value)]="mesagges" [enableService]="false" [closable]="true"></p-messages>
+</div>
+
