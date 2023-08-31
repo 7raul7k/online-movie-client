@@ -1,7 +1,7 @@
 <header class="header-container">
 
   <ul class="nav-container">
-    <button class="create-button">Create button</button>
+    <button class="create-button" routerLink="/new">Create button</button>
   </ul>
 </header>
 
@@ -11,7 +11,7 @@
 
   <form class="card-container" *ngFor="let movie of movies ">
 
-    <section class="title-container">
+    <section class="title-container" (click)="navigateToUpdate(movie)">
       <label for="title" id="title">Title:</label>
       <h2 class="title">{{movie.name}}</h2>
     </section>

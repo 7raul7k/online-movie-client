@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MovieService} from "../services/movie.service";
 import {MoviesDTO} from "../../models/api/MoviesDTO";
 import {Message} from "primeng/api";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 
 @Component({
   selector: 'app-movie-update',
@@ -22,7 +23,7 @@ export class MovieUpdateComponent implements OnInit,OnDestroy{
   id = 10;
 
   messages: Message[] =[];
-  constructor(private movieService : MovieService) {
+  constructor(private movieService : MovieService,private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnDestroy(): void {
@@ -33,15 +34,21 @@ export class MovieUpdateComponent implements OnInit,OnDestroy{
     this.messages = [{ severity: 'success', summary: 'Success', detail:  'Message Content' },
       { severity: 'error', summary: 'Error', detail: 'Message Content' }];
 
-    this.movieService.getMovieById(this.id).subscribe({
-      next:(data)=>{
-  console.log(data);
-  this.movie = data;
-      },
-      error:(err)=> {
-        console.log(err);
+    this.route.params.subscribe({
+      next:(params:Params)=>{
+        this.id=params['id'];
+        this.movieService.getMovieById(this.id).subscribe({
+          next:(data)=>{
+            this.movie=data;
+          },
+          error:(err)=> {
+
+            console.log(err);
+          }
+
+        });
       }
-    })
+    });
   }
 
   updateMovie() {
@@ -49,6 +56,10 @@ export class MovieUpdateComponent implements OnInit,OnDestroy{
     this.movieService.updateMovie(this.movie).subscribe({
       next: (data) => {
         this.messages.push({severity: 'success', summary: 'Success', detail: 'Movie was updated'})
+
+        this.router.navigate(['/']);
+
+
       },
       error: (err) => {
         console.log(err)  }

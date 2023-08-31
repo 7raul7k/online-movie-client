@@ -4,4 +4,5 @@ export interface MoviesDTO{
   year: number;
   rating: string;
   director: string;
+
 }
