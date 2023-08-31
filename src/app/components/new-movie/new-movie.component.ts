@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MovieService} from "../services/movie.service";
 import {Message} from "primeng/api";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-new-movie',
@@ -17,7 +18,7 @@ export class NewMovieComponent implements OnInit, OnDestroy {
 
   mesagges: Message[] =[];
 
-  constructor(private movieService: MovieService) {
+  constructor(private movieService: MovieService,private router: Router) {
   }
 
   ngOnInit(): void {
@@ -47,6 +48,9 @@ export class NewMovieComponent implements OnInit, OnDestroy {
       this.movieService.addMovie(movieDTO).subscribe({
         next: (data) => {
           this.mesagges.push({severity:'success',summary:'Success',detail:'Movie was added'});
+
+          this.router.navigate(['/']);
+
         },
         complete: () => {
 

@@ -31,4 +31,8 @@ export class HomeComponent implements OnInit,OnDestroy{
   constructor(private movieService: MovieService) {
   }
 
+  navigateToUpdate(movie:any) {
+    this.router.navigate(['/update', movie.id])
+  }
+
 }
