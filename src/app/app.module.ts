@@ -9,7 +9,7 @@ import {MessagesModule} from "primeng/messages";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { MovieUpdateComponent } from './components/movie-update/movie-update.component';
 import {NewMovieComponent} from "./components/new-movie/new-movie.component";
-
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,8 @@ import {NewMovieComponent} from "./components/new-movie/new-movie.component";
     HttpClientModule,
     FormsModule,
     MessagesModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

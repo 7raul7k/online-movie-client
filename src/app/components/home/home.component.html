@@ -1,37 +1,52 @@
 <header class="header-container">
 
+  <h1>Movies </h1>
+
   <ul class="nav-container">
     <button class="create-button" routerLink="/new">Create button</button>
   </ul>
 </header>
 
+<div *ngIf="(loadingState$ | async) === LoadingState.Loading;else loadedState "class="loading-container">
+  <p-progressSpinner></p-progressSpinner>
+</div>
 
+<ng-template #loadedState>
+  <ng-container *ngIf="(loadingState$ | async) === LoadingState.Success; else errorState">
+    <form class="cards-container">
 
-<form class="cards-container">
+      <form class="card-container" *ngFor="let movie of movies ">
 
-  <form class="card-container" *ngFor="let movie of movies ">
+        <section class="title-container" (click)="navigateToUpdate(movie)">
+          <label for="title" id="title">Title:</label>
+          <h2 class="title">{{movie.name}}</h2>
+        </section>
+        <section class="rating-container">
+          <label for="rating" id="rating">Rating:</label>
+          <p class="rating"> {{movie.rating}} / 10</p>
+        </section>
+        <section class="genre-container">
+          <label for="genre" id="genre">Genre:</label>
+          <p class="genre">{{movie.genre}}</p>
+        </section>
+        <section class="year-container">
+          <label for="year" id="year">Year:</label>
+          <p class="year">{{movie.year}}</p>
+        </section>
+        <section class="director-container">
+          <label for="director" id="director">Director:</label>
+          <p class="director">{{movie.director}}</p>
+        </section>
+      </form>
 
-    <section class="title-container" (click)="navigateToUpdate(movie)">
-      <label for="title" id="title">Title:</label>
-      <h2 class="title">{{movie.name}}</h2>
-    </section>
-    <section class="rating-container">
-      <label for="rating" id="rating">Rating:</label>
-      <p class="rating"> {{movie.rating}} / 10</p>
-    </section>
-    <section class="genre-container">
-      <label for="genre" id="genre">Genre:</label>
-      <p class="genre">{{movie.genre}}</p>
-    </section>
-    <section class="year-container">
-      <label for="year" id="year">Year:</label>
-      <p class="year">{{movie.year}}</p>
-    </section>
-    <section class="director-container">
-      <label for="director" id="director">Director:</label>
-      <p class="director">{{movie.director}}</p>
-    </section>
-  </form>
+      <ng-template #errorState>
+        <p class="error-message">Error loading movies</p>
+      </ng-template>
 
+    </form>
+  </ng-container>
+</ng-template>
 
-</form>
+<ng-template #errorState>
+  <p class="error-message">Error loading movies</p>
+</ng-template>

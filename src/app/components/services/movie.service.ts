@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {catchError, Observable, throwError} from "rxjs";
+import {BehaviorSubject, catchError, Observable, throwError} from "rxjs";
 import {MoviesDTO} from "../../models/api/MoviesDTO";
+import {LoadingState} from "../../models/LoadingState.enum";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
+
+  loadingStateSubject$ = new BehaviorSubject<LoadingState>(LoadingState.Idle);
 
   private url ="http://localhost:8080/api/v1/movie"
 
@@ -14,6 +17,7 @@ export class MovieService {
 
 
   getAllMovies(){
+    this.loadingStateSubject$.next(LoadingState.Loading);
     return this.http.get<MoviesDTO[]>(this.url + "/allMovies").pipe(catchError(this.handleError));
   }
 
